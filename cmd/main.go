@@ -1,17 +1,21 @@
 package main
 
-import "github.com/gin-gonic/gin"
-
-func getHandler(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": "Labas",
-	})
-}
+import (
+	"github.com/gin-gonic/gin"
+	"go-gin-rest/handlers"
+	"log"
+)
 
 func main() {
 	r := gin.Default()
 
-	r.GET("/", getHandler)
+	userRoutes := r.Group("/users")
+	{
+		userRoutes.GET("/", handlers.GetUsers)
+		userRoutes.POST("/", handlers.CreateUser)
+	}
 
-	r.Run()
+	if err := r.Run(); err != nil {
+		log.Fatal(err)
+	}
 }
