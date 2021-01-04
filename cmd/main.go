@@ -13,6 +13,7 @@ func main() {
 	{
 		userRoutes.GET("/", handlers.GetUsers)
 		userRoutes.POST("/", handlers.CreateUser)
+		userRoutes.PUT("/:id", handlers.EditUser)
 	}
 
 	if err := r.Run(); err != nil {
