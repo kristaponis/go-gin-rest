@@ -59,3 +59,12 @@ func EditUser(c *gin.Context) {
 	})
 }
 
+func DeleteUser(c *gin.Context) {
+	id := c.Param("id")
+	for i, u := range models.Users {
+		if u.ID == id {
+			models.Users = append(models.Users[:i], models.Users[i + 1:]...)
+		}
+	}
+}
+

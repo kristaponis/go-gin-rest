@@ -14,6 +14,7 @@ func main() {
 		userRoutes.GET("/", handlers.GetUsers)
 		userRoutes.POST("/", handlers.CreateUser)
 		userRoutes.PUT("/:id", handlers.EditUser)
+		userRoutes.DELETE("/:id", handlers.DeleteUser)
 	}
 
 	if err := r.Run(); err != nil {
